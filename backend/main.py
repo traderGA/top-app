@@ -5,7 +5,9 @@ from pydantic import BaseModel
 
 app = FastAPI()
 
-origins = ['https://localhost:3000']
+origins = [
+    'http://localhost:5173'
+    ]
 
 app.add_middleware(
     CORSMiddleware,
@@ -15,11 +17,9 @@ app.add_middleware(
     allow_headers=['*']
 )
 
-
-
 @app.get('/')
 def read_root():
-    return {'Hello': 'World'}
+    return {'Test': 'Successful'}
 
 if __name__ == '__main__':
     uvicorn.run(app, host="0.0.0.0", port=8000)
