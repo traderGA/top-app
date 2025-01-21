@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import api from "../api.js";
 
 const TestComponent = () => {
@@ -6,8 +6,8 @@ const TestComponent = () => {
 
     const runTest = async () => {
         try {
-            const response = await api.get('/');
-            setTest(response.data);
+            const response = await api.get('/todos');
+            setTest(response);
         } catch (error) {
             console.error("Error running test:", error);
         }
@@ -22,7 +22,11 @@ const TestComponent = () => {
         <div>
             <h3>Press Submit to Run Test</h3>
             <button type="submit" onClick={handleSubmit}>Submit</button>
-            <p>{test.Test}</p>
+            <ul>
+                {test.map((todo) => (
+                <li key={todo.id}>{todo.name}</li>
+            ))}
+            </ul>
         </div>
     )
 };
