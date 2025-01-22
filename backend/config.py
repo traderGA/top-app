@@ -1,6 +1,10 @@
+from dotenv import load_dotenv
+import os
 from pymongo import MongoClient
 
-client = MongoClient('mongodb://localhost:27017')
+load_dotenv()
+database_url=os.getenv("DATABASE_URL")
+client = MongoClient(database_url)
 
 db = client.testdb
 
