@@ -7,4 +7,3 @@ db = client.testdb
 tickers_col = db.tickers
 
 bars_col = db.daily_bars
-
